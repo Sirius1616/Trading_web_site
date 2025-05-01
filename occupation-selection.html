@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ocupación</title>
+    <link href="./assets/css/main.css" rel="stylesheet">
+    <link href="./assets/css/forms.css" rel="stylesheet">
+</head>
+<body>
+    <form id="tradingForm" data-sheets>
+        <input type="hidden" name="formStage" value="occupation">
+        
+        <div class="form-card">
+            <h2 class="card-title">A qué te dedicas?*</h2>
+            <div class="option-group">
+                <div class="option-item selected" data-value="student">
+                    <div class="option-text">Estudiante</div>
+                </div>
+                <div class="option-item" data-value="full-time">
+                    <div class="option-text">Profesional a tiempo completo</div>
+                </div>
+                <div class="option-item" data-value="part-time">
+                    <div class="option-text">Profesional a tiempo parcial</div>
+                </div>
+                <div class="option-item" data-value="entrepreneur">
+                    <div class="option-text">Emprendedor</div>
+                </div>
+                <div class="option-item" data-value="retired">
+                    <div class="option-text">Jubilado</div>
+                </div>
+                <div class="option-item" data-value="other">
+                    <div class="option-text">Otro</div>
+                </div>
+            </div>
+            <input type="hidden" name="profession" id="professionInput" required>
+            <div class="form-navigation">
+                <a href="./age-selection.html" class="btn btn-secondary">Atrás</a>
+                <button type="submit" class="btn">Enviar</button>
+            </div>
+        </div>
+    </form>
+
+    <script src="./assets/js/form-navigation.js"></script>
+    <script src="./assets/js/form-submission.js"></script>
+</body>
+</html>

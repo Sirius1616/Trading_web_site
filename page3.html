@@ -1,0 +1,632 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Comunidad de Trading</title>
+    <!-- Google Tag Manager -->
+    <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+    new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+    j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+    'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+    })(window,document,'script','dataLayer','GTM-XXXXXX');</script>
+    <!-- End Google Tag Manager -->
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=DM+Sans:wght@400;500&display=swap');
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            background: white;
+            color: #07070C;
+            line-height: 1.6;
+        }
+
+        .container {
+            width: 100%;
+            min-width: 320px;
+            max-width: 100%;
+            margin: 0 auto;
+            background: white;
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-start;
+            align-items: center;
+        }
+
+        /* Navbar */
+        .navbar {
+            width: 100%;
+            padding: 20px 5%;
+            background: white;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .logo {
+            color: #F9CA2E;
+            font-size: 28px;
+            font-family: 'Poppins', sans-serif;
+            font-weight: 800;
+            text-decoration: none;
+        }
+
+        /* Content Section */
+        .content-section {
+            width: 100%;
+            padding: 50px 5%;
+            background: white;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            gap: 30px;
+        }
+
+        .content-column {
+            width: 100%;
+            max-width: 390px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            gap: 40px;
+        }
+
+        .content-frame {
+            width: 100%;
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-start;
+            align-items: flex-start;
+            gap: 30px;
+        }
+
+        .content-text {
+            width: 100%;
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-start;
+            align-items: flex-start;
+            gap: 24px;
+        }
+
+        .title {
+            width: 100%;
+            color: #07070C;
+            font-size: clamp(24px, 6vw, 32px);
+            font-weight: 600;
+            line-height: 1.3;
+        }
+
+        .title span.yellow {
+            color: #F9CA2E;
+        }
+
+        .description {
+            width: 100%;
+            color: #333335;
+            font-size: clamp(16px, 4.5vw, 20px);
+            font-weight: 500;
+            line-height: 1.4;
+        }
+
+        .image-placeholder {
+            width: 100%;
+            max-width: 310px;
+            height: auto;
+            aspect-ratio: 310/385.78;
+            border-radius: 32px;
+            background: #F4F4F6;
+            margin: 0 auto;
+        }
+
+        /* Form Elements */
+        .form-input {
+            width: 100%;
+            padding: 16px 28px;
+            background: #F4F4F6;
+            border-radius: 100px;
+            border: none;
+            font-family: 'Poppins', sans-serif;
+            font-size: 14px;
+            font-weight: 500;
+            color: #6E727E;
+            appearance: none;
+        }
+
+        select.form-input {
+            background-image: url("data:image/svg+xml,%3Csvg width='14' height='8' viewBox='0 0 14 8' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M0.711197 1.63092C0.396214 1.31594 0.619297 0.777367 1.06475 0.777367L12.7927 0.777367C13.2381 0.777367 13.4612 1.31594 13.1462 1.63092L7.28226 7.49488C7.087 7.69014 6.77042 7.69014 6.57516 7.49488L0.711197 1.63092Z' fill='%236E727E'/%3E%3C/svg%3E");
+            background-repeat: no-repeat;
+            background-position: right 28px center;
+        }
+
+        /* Radio Buttons */
+        .radio-option {
+            display: flex;
+            align-items: flex-start;
+            gap: 9.6px;
+            cursor: pointer;
+            width: 100%;
+        }
+
+        .radio-circle {
+            width: 24px;
+            min-width: 24px;
+            height: 24px;
+            border-radius: 50%;
+            border: 1.2px solid #D1D1D6;
+            position: relative;
+            margin-top: 3px;
+        }
+
+        .radio-circle.selected {
+            border-color: #F98368;
+        }
+
+        .radio-dot {
+            position: absolute;
+            width: 12px;
+            height: 12px;
+            background: #F98368;
+            border-radius: 50%;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            display: none;
+        }
+
+        .radio-circle.selected .radio-dot {
+            display: block;
+        }
+
+        .radio-label {
+            color: #2C2C2E;
+            font-size: clamp(12px, 3.5vw, 14.4px);
+            font-weight: 400;
+            line-height: 1.4;
+        }
+
+        /* Button */
+        .btn {
+            display: inline-flex;
+            padding: 16px 20px;
+            background: #F9CA2E;
+            border-radius: 100px;
+            color: #323131;
+            font-family: 'DM Sans', sans-serif;
+            font-size: clamp(16px, 4.5vw, 18px);
+            font-weight: 400;
+            text-decoration: none;
+            justify-content: center;
+            align-items: center;
+            gap: 10px;
+            border: none;
+            cursor: pointer;
+            width: 100%;
+            max-width: 390px;
+        }
+
+        /* Form Section */
+        .form-group {
+            width: 100%;
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-start;
+            align-items: flex-start;
+            gap: 14px;
+            margin-bottom: 20px;
+        }
+
+        .form-label {
+            color: #212121;
+            font-size: clamp(12px, 3.5vw, 14px);
+            font-weight: 500;
+            line-height: 1.7;
+        }
+
+        /* Form Container */
+        .form-container {
+            width: 100%;
+            max-width: 390px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            gap: 40px;
+        }
+
+        /* Info Box */
+        .info-box {
+            width: 100%;
+            padding: 40px 24px;
+            border-radius: 60px;
+            outline: 1.5px #F4F4F6 solid;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            gap: 30px;
+            max-width: 390px;
+        }
+
+        .info-text {
+            width: 100%;
+            text-align: center;
+            color: #6E727E;
+            font-size: clamp(14px, 4vw, 16px);
+            font-weight: 500;
+            line-height: 1.5;
+        }
+
+        /* Footer */
+        .footer {
+            width: 100%;
+            padding: 50px 5%;
+            background: #07070C;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            gap: 30px;
+        }
+
+        .footer-content {
+            width: 100%;
+            max-width: 390px;
+            padding: 40px 5%;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            gap: 40px;
+            border-radius: 60px;
+        }
+
+        .footer-logo {
+            color: white;
+            font-size: clamp(24px, 6vw, 28px);
+            font-weight: 600;
+        }
+
+        .footer-text {
+            color: white;
+            font-size: clamp(16px, 4.5vw, 18px);
+            font-family: 'DM Sans', sans-serif;
+            font-weight: 400;
+        }
+
+        .footer-icon-text {
+            display: flex;
+            justify-content: flex-start;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .divider {
+            width: 100%;
+            max-width: 210px;
+            height: 2px;
+            background: rgba(110, 114, 126, 0.2);
+        }
+
+        .footer-small {
+            color: #F4F4F6;
+            font-size: clamp(14px, 4vw, 18px);
+            font-weight: 300;
+            text-align: center;
+        }
+
+        /* Responsive adjustments */
+        @media (min-width: 768px) {
+            .navbar {
+                padding: 20px 100px;
+            }
+            .content-section {
+                padding: 50px 40px;
+            }
+            .footer {
+                padding: 50px;
+            }
+        }
+
+        /* Radio button group adjustments */
+        .radio-group {
+            width: 100%;
+            padding: 0 8px;
+            display: flex;
+            flex-direction: column;
+            gap: 16px;
+        }
+
+        /* Form section adjustments */
+        .form-section {
+            width: 100%;
+            padding: 0 5% 100px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            gap: 40px;
+        }
+
+        .form-title {
+            width: 100%;
+            text-align: center;
+            color: #07070C;
+            font-size: clamp(24px, 6vw, 32px);
+            font-weight: 500;
+        }
+
+        /* Yes/No radio options */
+        .yes-no-options {
+            width: 100%;
+            padding: 0 24px;
+            display: flex;
+            justify-content: flex-start;
+            gap: 40px;
+        }
+    </style>
+</head>
+<body>
+    <!-- Google Tag Manager (noscript) -->
+    <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-XXXXXX"
+    height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+    <!-- End Google Tag Manager (noscript) -->
+
+    <div class="container">
+        <!-- Navbar -->
+        <nav class="navbar">
+            <a href="index.html" class="logo">LOGO</a>
+        </nav>
+
+        <!-- Content Section -->
+        <section class="content-section">
+            <div class="content-column">
+                <div class="content-frame">
+                    <div class="content-text">
+                        <h1 class="title">Bienvenidos a "Cómo Vivir del <span class="yellow">Trading</span> y no <span class="yellow">morir</span> en el intento</h1>
+                        <p class="description">Únete a la mejor comunidad hispana de trading y descubre el emocionante mundo del trading con contenido educativo y apoyo para todos los niveles.</p>
+                    </div>
+                    <div class="image-placeholder"></div>
+                </div>
+                
+                <a href="time-selection.html" class="btn btn-primary">unirse a la comunidad</a>
+                
+                <div class="info-box">
+                    <p class="info-text">
+                        Únete a nuestra lista de espera para acceder a análisis de mercados, estrategias financieras y construir tu propio camino. Prepárate para cómo vivir del trading y no morir en el intento. ¿Por qué unirte a nuestra comunidad? Porque estamos formando la mejor comunidad de trading en habla hispana. Estamos creando algo único y emocionante. ¡Sé parte desde el principio! ¡Suscríbete ahora!
+                    </p>
+                    <a href="time-selection.html" class="btn btn-primary">unirse a la comunidad</a>
+                </div>
+            </div>
+            
+            <div style="width: 100%; max-width: 310px; height: 2px; background: rgba(248, 247, 251, 0.2);"></div>
+        </section>
+
+        <!-- Contact Form Section -->
+        <section class="form-section">
+            <h2 class="form-title">Por favor complete el formulario</h2>
+            
+            <form class="form-container" id="mainForm">
+                <!-- Name Field -->
+                <div class="form-group">
+                    <label for="name" class="form-label">Nombre*</label>
+                    <input type="text" id="name" name="name" class="form-input" placeholder="Introduzca su nombre" required>
+                </div>
+                
+                <!-- Email Field -->
+                <div class="form-group">
+                    <label for="email" class="form-label">Correo Electrónico*</label>
+                    <input type="email" id="email" name="email" class="form-input" placeholder="Introduce tu correo electrónico" required>
+                </div>
+                
+                <!-- Country Field -->
+                <div class="form-group">
+                    <label for="country" class="form-label">País*</label>
+                    <select id="country" name="country" class="form-input" required>
+                        <option value="" disabled selected>Elige tu país</option>
+                        <option value="Mexico">México</option>
+                        <option value="Spain">España</option>
+                        <option value="Argentina">Argentina</option>
+                        <option value="Colombia">Colombia</option>
+                        <option value="Chile">Chile</option>
+                    </select>
+                </div>
+                
+                <!-- Experience Level -->
+                <div class="form-group">
+                    <label class="form-label" style="font-size: clamp(18px, 5vw, 20px); font-weight: 600;">Selección de nivel de experiencia comercial</label>
+                    
+                    <div class="radio-group">
+                        <label class="form-label">Principiante a experto*</label>
+                        
+                        <div class="radio-option" onclick="selectRadio(this)">
+                            <input type="radio" id="experience-beginner" name="experience" value="beginner" style="display: none;">
+                            <div class="radio-circle">
+                                <div class="radio-dot"></div>
+                            </div>
+                            <label for="experience-beginner" class="radio-label">Inicial: No tengo experiencia previa en trading.</label>
+                        </div>
+                        
+                        <div class="radio-option" onclick="selectRadio(this)">
+                            <input type="radio" id="experience-basic" name="experience" value="basic" style="display: none;">
+                            <div class="radio-circle">
+                                <div class="radio-dot"></div>
+                            </div>
+                            <label for="experience-basic" class="radio-label">Básico: He comenzado a aprender sobre trading, pero soy relativamente nuevo.</label>
+                        </div>
+                        
+                        <div class="radio-option" onclick="selectRadio(this)">
+                            <input type="radio" id="experience-intermediate" name="experience" value="intermediate" style="display: none;">
+                            <div class="radio-circle">
+                                <div class="radio-dot"></div>
+                            </div>
+                            <label for="experience-intermediate" class="radio-label">Intermedio: Tengo cierta experiencia y he realizado algunas operaciones.</label>
+                        </div>
+                        
+                        <div class="radio-option" onclick="selectRadio(this)">
+                            <input type="radio" id="experience-advanced" name="experience" value="advanced" checked style="display: none;">
+                            <div class="radio-circle selected">
+                                <div class="radio-dot"></div>
+                            </div>
+                            <label for="experience-advanced" class="radio-label">Avanzado: Tengo un conocimiento sólido y he estado operando regularmente.</label>
+                        </div>
+                        
+                        <div class="radio-option" onclick="selectRadio(this)">
+                            <input type="radio" id="experience-expert" name="experience" value="expert" style="display: none;">
+                            <div class="radio-circle">
+                                <div class="radio-dot"></div>
+                            </div>
+                            <label for="experience-expert" class="radio-label">Experto: Tengo experiencia extensa y conocimientos avanzados en trading.</label>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Trading Time -->
+                <div class="form-group">
+                    <label for="trading-time" class="form-label">Cuánto tiempo dedicas al trading cada semana?*</label>
+                    <select id="trading-time" name="trading-time" class="form-input" required>
+                        <option value="" disabled selected>Selecciona tu hora</option>
+                        <option value="less-than-5">Menos de 5 horas</option>
+                        <option value="5-10">5-10 horas</option>
+                        <option value="10-20">10-20 horas</option>
+                        <option value="20-plus">Más de 20 horas</option>
+                    </select>
+                </div>
+                
+                <!-- Combine Activities -->
+                <div class="form-group">
+                    <label class="form-label">Combines el trading con otras actividades?*</label>
+                    
+                    <div class="yes-no-options">
+                        <div class="radio-option" onclick="selectRadio(this)">
+                            <input type="radio" id="combine-yes" name="combine-activities" value="yes" checked style="display: none;">
+                            <div class="radio-circle selected">
+                                <div class="radio-dot"></div>
+                            </div>
+                            <label for="combine-yes" class="radio-label">Sí</label>
+                        </div>
+                        
+                        <div class="radio-option" onclick="selectRadio(this)">
+                            <input type="radio" id="combine-no" name="combine-activities" value="no" style="display: none;">
+                            <div class="radio-circle">
+                                <div class="radio-dot"></div>
+                            </div>
+                            <label for="combine-no" class="radio-label">No</label>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Submit Button -->
+                <button type="submit" class="btn" style="height: 63px;">Submit</button>
+            </form>
+        </section>
+
+        <!-- Footer -->
+        <footer class="footer">
+            <div class="footer-content">
+                <div style="width: 100%; display: flex; flex-direction: column; justify-content: center; align-items: center; gap: 20px;">
+                    <div class="footer-logo">LOGO</div>
+                    
+                    <div style="width: 100%; display: flex; flex-direction: column; justify-content: center; align-items: center; gap: 40px;">
+                        <div class="footer-icon-text">
+                            <svg width="25" height="25" viewBox="0 0 25 25" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <path d="M14.234 22.5933C16.8485 20.2923 21.5 15.5913 21.5 11.2773C21.5 8.8904 20.5518 6.60121 18.864 4.91338C17.1761 3.22556 14.8869 2.27734 12.5 2.27734C10.1131 2.27734 7.82387 3.22556 6.13604 4.91338C4.44821 6.60121 3.5 8.8904 3.5 11.2773C3.5 15.5913 8.15 20.2923 10.766 22.5933C11.2432 23.0193 11.8604 23.2547 12.5 23.2547C13.1396 23.2547 13.7568 23.0193 14.234 22.5933ZM9.5 11.2773C9.5 10.4817 9.81607 9.71863 10.3787 9.15602C10.9413 8.59341 11.7044 8.27734 12.5 8.27734C13.2956 8.27734 14.0587 8.59341 14.6213 9.15602C15.1839 9.71863 15.5 10.4817 15.5 11.2773C15.5 12.073 15.1839 12.8361 14.6213 13.3987C14.0587 13.9613 13.2956 14.2773 12.5 14.2773C11.7044 14.2773 10.9413 13.9613 10.3787 13.3987C9.81607 12.8361 9.5 12.073 9.5 11.2773Z" fill="white"/>
+                            </svg>
+                            <div class="footer-text">Java, Indonesia</div>
+                        </div>
+                        
+                        <div class="footer-icon-text">
+                            <svg width="24" height="25" viewBox="0 0 24 25" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <path d="M22 9.38534V17.5273C22.0001 18.3575 21.6824 19.1562 21.1123 19.7596C20.5422 20.363 19.7628 20.7253 18.934 20.7723L18.75 20.7773H5.25C4.41986 20.7774 3.62117 20.4598 3.01777 19.8897C2.41437 19.3196 2.052 18.5401 2.005 17.7113L2 17.5273V9.38534L11.652 14.4413C11.7594 14.4976 11.8788 14.527 12 14.527C12.1212 14.527 12.2406 14.4976 12.348 14.4413L22 9.38534ZM5.25 4.77734H18.75C19.5556 4.77725 20.3325 5.07634 20.93 5.61661C21.5276 6.15688 21.9032 6.89983 21.984 7.70134L12 12.9313L2.016 7.70134C2.09352 6.93166 2.44305 6.21486 3.00175 5.67981C3.56045 5.14475 4.29168 4.82653 5.064 4.78234L5.25 4.77734Z" fill="white"/>
+                            </svg>
+                            <div class="footer-text">Yourmail@mail.com</div>
+                        </div>
+                        
+                        <div class="footer-icon-text">
+                            <svg width="24" height="25" viewBox="0 0 24 25" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <path d="M22 9.38534V17.5273C22.0001 18.3575 21.6824 19.1562 21.1123 19.7596C20.5422 20.363 19.7628 20.7253 18.934 20.7723L18.75 20.7773H5.25C4.41986 20.7774 3.62117 20.4598 3.01777 19.8897C2.41437 19.3196 2.052 18.5401 2.005 17.7113L2 17.5273V9.38534L11.652 14.4413C11.7594 14.4976 11.8788 14.527 12 14.527C12.1212 14.527 12.2406 14.4976 12.348 14.4413L22 9.38534ZM5.25 4.77734H18.75C19.5556 4.77725 20.3325 5.07634 20.93 5.61661C21.5276 6.15688 21.9032 6.89983 21.984 7.70134L12 12.9313L2.016 7.70134C2.09352 6.93166 2.44305 6.21486 3.00175 5.67981C3.56045 5.14475 4.29168 4.82653 5.064 4.78234L5.25 4.77734Z" fill="white"/>
+                            </svg>
+                            <div class="footer-text">Your Instagram</div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="divider"></div>
+                
+                <div style="width: 100%; display: flex; flex-direction: column; justify-content: center; align-items: center; gap: 10px;">
+                    <div class="footer-small">©2023 MUAI</div>
+                    <div class="footer-small">All Rights Reserved</div>
+                    <div class="footer-small">Privacy Policy I Terms Of Service</div>
+                </div>
+            </div>
+        </footer>
+    </div>
+
+    <script>
+        // Form submission handler
+        document.getElementById('mainForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            // Prepare form data
+            const formData = new FormData(this);
+            const formObject = {};
+            formData.forEach((value, key) => formObject[key] = value);
+            
+            // Send to Google Sheets
+            const scriptURL = 'https://script.google.com/macros/s/YOUR_GOOGLE_SCRIPT_ID/exec';
+            fetch(scriptURL, {
+                method: 'POST',
+                body: JSON.stringify(formObject),
+                headers: {
+                    'Content-Type': 'application/json'
+                }
+            })
+            .then(response => {
+                // Push data to GTM dataLayer
+                window.dataLayer = window.dataLayer || [];
+                window.dataLayer.push({
+                    'event': 'formSubmission',
+                    'formData': formObject
+                });
+                
+                // Redirect to thank you page
+                window.location.href = 'thanks.html';
+            })
+            .catch(error => {
+                console.error('Error!', error.message);
+                // Fallback submission
+                this.submit();
+            });
+        });
+
+        // Radio button functionality
+        function selectRadio(option) {
+            const radioInput = option.querySelector('input[type="radio"]');
+            radioInput.checked = true;
+            
+            const group = option.closest('.radio-group') || option.parentElement;
+            if (group) {
+                group.querySelectorAll('.radio-circle').forEach(circle => {
+                    circle.classList.remove('selected');
+                });
+            }
+            option.querySelector('.radio-circle').classList.add('selected');
+        }
+
+        // Initialize radio buttons
+        document.querySelectorAll('.radio-option').forEach(option => {
+            option.addEventListener('click', function() {
+                selectRadio(this);
+            });
+        });
+    </script>
+</body>
+</html>

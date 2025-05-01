@@ -1,0 +1,74 @@
+/* Form Components */
+.form-card {
+    width: 100%;
+    max-width: 350px;
+    padding: 16px 12px;
+    background: white;
+    box-shadow: -4px 4px 8px rgba(0, 0, 0, 0.05);
+    border-radius: 12px;
+    border: 1px solid var(--border);
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    margin: 30px auto;
+}
+
+.card-title {
+    font-size: clamp(14px, 3.5vw, 18px);
+    font-weight: 600;
+    color: var(--text);
+    margin-bottom: 8px;
+    padding: 0 12px;
+}
+
+.option-group {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.option-item {
+    width: 100%;
+    padding: 12px 18px;
+    border-radius: 6px;
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    cursor: pointer;
+}
+
+.option-item.selected {
+    background: var(--light-gray);
+    border-radius: 100px;
+}
+
+.option-text {
+    font-size: clamp(12px, 3vw, 14px);
+    font-weight: 500;
+    color: #949494;
+}
+
+.option-item.selected .option-text {
+    font-weight: 600;
+    color: var(--text);
+}
+
+.form-navigation {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 20px;
+}
+
+/* Responsive Forms */
+@media (max-width: 400px) {
+    .form-card {
+        max-width: 100%;
+        border-radius: 0;
+        border-left: none;
+        border-right: none;
+    }
+    
+    .option-text {
+        font-size: 14px;
+    }
+}

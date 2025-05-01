@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Typography Controls</title>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@600&family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+    <link href="./assets/css/main.css" rel="stylesheet">
+    <link href="./assets/css/typography.css" rel="stylesheet">
+</head>
+<body>
+    <div class="container">
+        <div class="typography-header">
+            <h1>Typography</h1>
+        </div>
+        
+        <div class="font-showcase">
+            <div class="font-header">
+                <div class="font-name" id="fontName">Poppins</div>
+                <div class="font-weights">
+                    <div class="font-weight" data-weight="300">Light</div>
+                    <div class="font-weight active" data-weight="400">Regular</div>
+                    <div class="font-weight" data-weight="600">SemiBold</div>
+                </div>
+            </div>
+            
+            <div class="divider"></div>
+            
+            <div class="font-sample" id="fontSample">
+                aáàâåäãæbcçdðeéèêëfghiíìîïıjklmnñoóòôöõøœpqrsßtuúùûüvwxyýÿzþ
+            </div>
+        </div>
+    </div>
+    
+    <div class="controls">
+        <button class="control-btn" id="sizeUp">A+</button>
+        <button class="control-btn" id="sizeDown">A-</button>
+        <button class="control-btn" id="resetSize">Reset</button>
+    </div>
+    
+    <script src="./assets/js/font-controls.js"></script>
+</body>
+</html>

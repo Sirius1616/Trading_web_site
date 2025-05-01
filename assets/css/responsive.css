@@ -1,0 +1,33 @@
+/* Responsive Adjustments */
+@media (max-width: 768px) {
+    .hero-content {
+        flex-direction: column;
+    }
+    
+    .hero-image {
+        max-width: 100%;
+        order: -1;
+    }
+    
+    .font-header {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+    
+    .font-weights {
+        justify-content: flex-start;
+    }
+    
+    .font-sample {
+        letter-spacing: 0.2em;
+    }
+    
+    .form-navigation {
+        flex-direction: column;
+        gap: 10px;
+    }
+    
+    .btn {
+        width: 100%;
+    }
+}
